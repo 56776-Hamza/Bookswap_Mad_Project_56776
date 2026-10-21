@@ -279,9 +279,9 @@ class BookDetailsScreen extends StatelessWidget {
           ),
         ),
         child: PrimaryButton(
-          text: book.ownerId == 'u_hamza' ? 'Your Listing' : 'Request Swap',
-          icon: book.ownerId == 'u_hamza' ? Icons.inventory_2_outlined : Icons.swap_horizontal_circle_rounded,
-          onPressed: book.ownerId == 'u_hamza'
+          text: book.ownerId == 'u_xyz' ? 'Your Listing' : 'Request Swap',
+          icon: book.ownerId == 'u_xyz' ? Icons.inventory_2_outlined : Icons.swap_horizontal_circle_rounded,
+          onPressed: book.ownerId == 'u_xyz'
               ? () {}
               : () {
                   context.push('/request-swap/${book.id}');

@@ -9,8 +9,8 @@ class SwapProvider extends ChangeNotifier {
       targetBookTitle: 'Clean Code',
       targetBookAuthor: 'Robert C. Martin',
       targetBookCover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=400',
-      targetOwnerId: 'u_hamza',
-      targetOwnerName: 'Hamza Rahim',
+      targetOwnerId: 'u_xyz',
+      targetOwnerName: 'XYZ',
       requesterId: 'u_ali',
       requesterName: 'Ali Raza',
       requesterAvatar: 'https://i.pravatar.cc/150?img=12',
@@ -28,8 +28,8 @@ class SwapProvider extends ChangeNotifier {
       targetBookTitle: 'The Alchemist',
       targetBookAuthor: 'Paulo Coelho',
       targetBookCover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400',
-      targetOwnerId: 'u_hamza',
-      targetOwnerName: 'Hamza Rahim',
+      targetOwnerId: 'u_xyz',
+      targetOwnerName: 'XYZ',
       requesterId: 'u_sara',
       requesterName: 'Sara Khan',
       requesterAvatar: 'https://i.pravatar.cc/150?img=9',
@@ -47,8 +47,8 @@ class SwapProvider extends ChangeNotifier {
       targetBookTitle: 'Deep Work',
       targetBookAuthor: 'Cal Newport',
       targetBookCover: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&q=80&w=400',
-      targetOwnerId: 'u_hamza',
-      targetOwnerName: 'Hamza Rahim',
+      targetOwnerId: 'u_xyz',
+      targetOwnerName: 'XYZ',
       requesterId: 'u_hassan',
       requesterName: 'Hassan',
       requesterAvatar: 'https://i.pravatar.cc/150?img=13',
@@ -68,8 +68,8 @@ class SwapProvider extends ChangeNotifier {
       targetBookCover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400',
       targetOwnerId: 'u_ayesha',
       targetOwnerName: 'Ayesha Khan',
-      requesterId: 'u_hamza',
-      requesterName: 'Hamza Rahim',
+      requesterId: 'u_xyz',
+      requesterName: 'XYZ',
       requesterAvatar: 'https://i.pravatar.cc/300?img=11',
       offeredBookId: 'b3', // Clean Code
       offeredBookTitle: 'Clean Code',
@@ -84,11 +84,11 @@ class SwapProvider extends ChangeNotifier {
   List<SwapRequest> get allRequests => _requests;
 
   List<SwapRequest> get incomingRequests {
-    return _requests.where((r) => r.targetOwnerId == 'u_hamza').toList();
+    return _requests.where((r) => r.targetOwnerId == 'u_xyz').toList();
   }
 
   List<SwapRequest> get outgoingRequests {
-    return _requests.where((r) => r.requesterId == 'u_hamza').toList();
+    return _requests.where((r) => r.requesterId == 'u_xyz').toList();
   }
 
   SwapRequest? getRequestById(String id) {

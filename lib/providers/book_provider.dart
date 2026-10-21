@@ -81,8 +81,8 @@ class BookProvider extends ChangeNotifier {
     ),
     Book(
       id: 'b5',
-      ownerId: 'u_hamza', // User's own book
-      ownerName: 'Hamza Rahim',
+      ownerId: 'u_xyz', // User's own book
+      ownerName: 'XYZ',
       ownerAvatar: 'https://i.pravatar.cc/300?img=11',
       ownerCity: 'Islamabad',
       ownerRating: 4.8,
@@ -117,8 +117,8 @@ class BookProvider extends ChangeNotifier {
     ),
     Book(
       id: 'b7',
-      ownerId: 'u_hamza', // User's own book
-      ownerName: 'Hamza Rahim',
+      ownerId: 'u_xyz', // User's own book
+      ownerName: 'XYZ',
       ownerAvatar: 'https://i.pravatar.cc/300?img=11',
       ownerCity: 'Islamabad',
       ownerRating: 4.8,
@@ -191,19 +191,19 @@ class BookProvider extends ChangeNotifier {
   }
 
   List<Book> get recommendedBooks {
-    return _books.where((b) => b.ownerId != 'u_hamza').take(4).toList();
+    return _books.where((b) => b.ownerId != 'u_xyz').take(4).toList();
   }
 
   List<Book> get nearbyBooks {
-    return _books.where((b) => b.ownerId != 'u_hamza').skip(1).toList();
+    return _books.where((b) => b.ownerId != 'u_xyz').skip(1).toList();
   }
 
   List<Book> get myBooks {
-    return _books.where((b) => b.ownerId == 'u_hamza').toList();
+    return _books.where((b) => b.ownerId == 'u_xyz').toList();
   }
 
   List<Book> get myAvailableBooks {
-    return _books.where((b) => b.ownerId == 'u_hamza' && b.status == 'Available').toList();
+    return _books.where((b) => b.ownerId == 'u_xyz' && b.status == 'Available').toList();
   }
 
   List<Book> get wishlistBooks {

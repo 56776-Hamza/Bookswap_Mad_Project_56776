@@ -76,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Roll No: 56776 • ${user.city}',
+                    'xyz • ${user.city}',
                     style: TextStyle(
                       fontSize: 14,
                       color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,

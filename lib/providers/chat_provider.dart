@@ -16,8 +16,8 @@ class ChatProvider extends ChangeNotifier {
       ChatMessage(
         id: 'm2',
         requestId: 'req_4',
-        senderId: 'u_hamza',
-        senderName: 'Hamza Rahim',
+        senderId: 'u_xyz',
+        senderName: 'XYZ',
         text: "Sure! Which book would you like to offer?",
         timestamp: DateTime.now().subtract(const Duration(minutes: 28)),
         isMe: true,
@@ -34,8 +34,8 @@ class ChatProvider extends ChangeNotifier {
       ChatMessage(
         id: 'm4',
         requestId: 'req_4',
-        senderId: 'u_hamza',
-        senderName: 'Hamza Rahim',
+        senderId: 'u_xyz',
+        senderName: 'XYZ',
         text: "That sounds good! Let's meet at F-10 this weekend.",
         timestamp: DateTime.now().subtract(const Duration(minutes: 25)),
         isMe: true,
@@ -53,8 +53,8 @@ class ChatProvider extends ChangeNotifier {
     final newMessage = ChatMessage(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       requestId: requestId,
-      senderId: 'u_hamza',
-      senderName: 'Hamza Rahim',
+      senderId: 'u_xyz',
+      senderName: 'XYZ',
       text: text.trim(),
       timestamp: DateTime.now(),
       isMe: true,

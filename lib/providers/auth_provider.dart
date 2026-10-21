@@ -3,9 +3,9 @@ import '../models/app_user.dart';
 
 class AuthProvider extends ChangeNotifier {
   AppUser _currentUser = AppUser(
-    id: 'u_hamza',
-    name: 'Hamza Rahim',
-    email: 'hamza.rahim@example.com',
+    id: 'u_xyz',
+    name: 'XYZ',
+    email: 'xyz@example.com',
     avatarUrl: 'https://i.pravatar.cc/300?img=11',
     city: 'Islamabad',
     ratingAvg: 4.8,
@@ -21,8 +21,8 @@ class AuthProvider extends ChangeNotifier {
   void login(String email, String password) {
     _isLoggedIn = true;
     _currentUser = AppUser(
-      id: 'u_hamza',
-      name: email.contains('@') ? email.split('@')[0] : 'Hamza Rahim',
+      id: 'u_xyz',
+      name: email.contains('@') ? email.split('@')[0] : 'XYZ',
       email: email,
       avatarUrl: 'https://i.pravatar.cc/300?img=11',
       city: 'Islamabad',
@@ -36,9 +36,9 @@ class AuthProvider extends ChangeNotifier {
   void loginWithGoogle() {
     _isLoggedIn = true;
     _currentUser = AppUser(
-      id: 'u_hamza',
-      name: 'Hamza Rahim',
-      email: 'hamza.google@example.com',
+      id: 'u_xyz',
+      name: 'XYZ',
+      email: 'xyz@example.com',
       avatarUrl: 'https://i.pravatar.cc/300?img=11',
       city: 'Islamabad',
       ratingAvg: 4.8,
