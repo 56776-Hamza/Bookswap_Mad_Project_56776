@@ -176,7 +176,17 @@ class BookDetailsScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 26,
-                    backgroundImage: NetworkImage(book.ownerAvatar),
+                    backgroundColor: AppColors.primaryLight.withValues(alpha: 0.3),
+                    child: ClipOval(
+                      child: Image.network(
+                        book.ownerAvatar,
+                        width: 52,
+                        height: 52,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.person, color: AppColors.primary),
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 14),
                   Expanded(

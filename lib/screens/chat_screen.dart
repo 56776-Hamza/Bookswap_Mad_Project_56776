@@ -48,8 +48,16 @@ class _ChatScreenState extends State<ChatScreen> {
           children: [
             CircleAvatar(
               radius: 18,
-              backgroundImage: NetworkImage(
-                request?.requesterAvatar ?? 'https://i.pravatar.cc/150?img=5',
+              backgroundColor: AppColors.primaryLight.withValues(alpha: 0.3),
+              child: ClipOval(
+                child: Image.network(
+                  request?.requesterAvatar ?? 'https://i.pravatar.cc/150?img=5',
+                  width: 36,
+                  height: 36,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.person, color: AppColors.primary, size: 18),
+                ),
               ),
             ),
             const SizedBox(width: 10),

@@ -133,6 +133,12 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
                         width: 60,
                         height: 80,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) => Container(
+                          width: 60,
+                          height: 80,
+                          color: AppColors.primary,
+                          child: const Icon(Icons.book, color: Colors.white),
+                        ),
                       ),
                     ),
                     const SizedBox(width: 14),
@@ -246,6 +252,12 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
                                       height: 90,
                                       width: double.infinity,
                                       fit: BoxFit.cover,
+                                      errorBuilder: (context, error, stackTrace) => Container(
+                                        height: 90,
+                                        width: double.infinity,
+                                        color: AppColors.primary,
+                                        child: const Icon(Icons.book, color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                   if (isSelected)

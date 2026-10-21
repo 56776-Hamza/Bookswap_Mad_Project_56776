@@ -57,68 +57,72 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   final slide = _slides[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 20),
-                        // Illustration Box
-                        Container(
-                          width: double.infinity,
-                          height: 260,
-                          decoration: BoxDecoration(
-                            color: const Color(0xFFE8F5E9),
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Positioned(
-                                bottom: 20,
-                                child: Container(
-                                  width: 200,
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.primaryLight.withValues(alpha: 0.3),
-                                    shape: BoxShape.circle,
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 12),
+                          // Illustration Box
+                          Container(
+                            width: double.infinity,
+                            constraints: const BoxConstraints(maxHeight: 200),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFE8F5E9),
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Positioned(
+                                  bottom: 10,
+                                  child: Container(
+                                    width: 150,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.primaryLight.withValues(alpha: 0.3),
+                                      shape: BoxShape.circle,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Icon(
-                                index == 0
-                                    ? Icons.menu_book_rounded
-                                    : index == 1
-                                        ? Icons.swap_horizontal_circle_rounded
-                                        : index == 2
-                                            ? Icons.chat_bubble_rounded
-                                            : Icons.groups_rounded,
-                                size: 100,
-                                color: AppColors.primary,
-                              ),
-                            ],
+                                Icon(
+                                  index == 0
+                                      ? Icons.menu_book_rounded
+                                      : index == 1
+                                          ? Icons.swap_horizontal_circle_rounded
+                                          : index == 2
+                                              ? Icons.chat_bubble_rounded
+                                              : Icons.groups_rounded,
+                                  size: 80,
+                                  color: AppColors.primary,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 40),
-                        Text(
-                          slide['title']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.lightTextPrimary,
-                            height: 1.2,
+                          const SizedBox(height: 24),
+                          Text(
+                            slide['title']!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.lightTextPrimary,
+                              height: 1.2,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          slide['subtitle']!,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: AppColors.lightTextSecondary,
-                            height: 1.4,
+                          const SizedBox(height: 12),
+                          Text(
+                            slide['subtitle']!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: AppColors.lightTextSecondary,
+                              height: 1.4,
+                            ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 12),
+                        ],
+                      ),
                     ),
                   );
                 },

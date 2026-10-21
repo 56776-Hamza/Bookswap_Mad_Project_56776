@@ -131,8 +131,16 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
             children: [
               CircleAvatar(
                 radius: 20,
-                backgroundImage: NetworkImage(
-                  isIncoming ? req.requesterAvatar : req.targetBookCover,
+                backgroundColor: AppColors.primaryLight.withValues(alpha: 0.3),
+                child: ClipOval(
+                  child: Image.network(
+                    isIncoming ? req.requesterAvatar : req.targetBookCover,
+                    width: 40,
+                    height: 40,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.person, color: AppColors.primary, size: 20),
+                  ),
                 ),
               ),
               const SizedBox(width: 12),

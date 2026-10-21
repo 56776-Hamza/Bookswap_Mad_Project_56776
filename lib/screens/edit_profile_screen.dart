@@ -69,7 +69,17 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(user.avatarUrl),
+                      backgroundColor: AppColors.primaryLight.withValues(alpha: 0.3),
+                      child: ClipOval(
+                        child: Image.network(
+                          user.avatarUrl,
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(Icons.person, color: AppColors.primary, size: 48),
+                        ),
+                      ),
                     ),
                     Positioned(
                       bottom: 0,
