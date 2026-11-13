@@ -51,9 +51,9 @@ class BookCard extends StatelessWidget {
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                          decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [Color(0xFF2E7D32), Color(0xFF1E6F5C)],
+                         decoration: const BoxDecoration(
+                           gradient: LinearGradient(
+                             colors: [Color(0xFF2E7D32), Color(0xFF1E6F5C)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -62,8 +62,8 @@ class BookCard extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                book.title,
-                                textAlign: TextAlign.center,
+                               book.title,
+                               textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
