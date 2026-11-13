@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// CategoryChip Widget: Reusable horizontal filter pill for categories
+/// Highlighting active selection with primary color and shadow
+/// ---------------------------------------------------------------------------
 class CategoryChip extends StatelessWidget {
-  final String label;
-  final IconData? icon;
-  final bool isSelected;
-  final VoidCallback onTap;
+  final String label;         // Category title (e.g. Fiction, Programming)
+  final IconData? icon;       // Optional trailing/leading icon
+  final bool isSelected;     // True if currently selected
+  final VoidCallback onTap;   // Callback when chip is tapped
 
   const CategoryChip({
     super.key,

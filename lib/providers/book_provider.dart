@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../models/book.dart';
 
+/// ---------------------------------------------------------------------------
+/// BookProvider: Manages book inventory, search/category filtering, and wishlist
+/// ---------------------------------------------------------------------------
 class BookProvider extends ChangeNotifier {
   String _selectedCategory = 'All';
   String _selectedCondition = 'All';
   String _searchQuery = '';
 
+  // Initial mock inventory of books
   final List<Book> _books = [
     Book(
       id: 'b1',
@@ -171,12 +175,13 @@ class BookProvider extends ChangeNotifier {
     ),
   ];
 
+  // Getters for state variables
   String get selectedCategory => _selectedCategory;
   String get selectedCondition => _selectedCondition;
   String get searchQuery => _searchQuery;
-
   List<Book> get allBooks => _books;
 
+  /// Returns filtered books based on active category, search query, and condition filters
   List<Book> get filteredBooks {
     return _books.where((book) {
       final matchesCategory = _selectedCategory == 'All' || book.category == _selectedCategory;
@@ -190,26 +195,32 @@ class BookProvider extends ChangeNotifier {
     }).toList();
   }
 
+  /// Recommended books section
   List<Book> get recommendedBooks {
     return _books.where((b) => b.ownerId != 'u_xyz').take(4).toList();
   }
 
+  /// Nearby books section
   List<Book> get nearbyBooks {
     return _books.where((b) => b.ownerId != 'u_xyz').skip(1).toList();
   }
 
+  /// User's own books listed for swap
   List<Book> get myBooks {
     return _books.where((b) => b.ownerId == 'u_xyz').toList();
   }
 
+  /// Available books belonging to the current user
   List<Book> get myAvailableBooks {
     return _books.where((b) => b.ownerId == 'u_xyz' && b.status == 'Available').toList();
   }
 
+  /// Saved wishlist books list
   List<Book> get wishlistBooks {
     return _books.where((b) => b.isWishlisted).toList();
   }
 
+  /// Returns a specific book by ID
   Book? getBookById(String id) {
     try {
       return _books.firstWhere((b) => b.id == id);
@@ -218,6 +229,7 @@ class BookProvider extends ChangeNotifier {
     }
   }
 
+  /// Filter setters
   void setCategory(String category) {
     _selectedCategory = category;
     notifyListeners();
@@ -233,6 +245,7 @@ class BookProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Toggles wishlist heart status for a specific book
   void toggleWishlist(String bookId) {
     final index = _books.indexWhere((b) => b.id == bookId);
     if (index != -1) {
@@ -243,11 +256,13 @@ class BookProvider extends ChangeNotifier {
     }
   }
 
+  /// Adds a new book listing to the inventory
   void addBook(Book newBook) {
     _books.insert(0, newBook);
     notifyListeners();
   }
 
+  /// Updates status of a book listing (e.g. Available ➔ Swapped)
   void updateBookStatus(String bookId, String newStatus) {
     final index = _books.indexWhere((b) => b.id == bookId);
     if (index != -1) {

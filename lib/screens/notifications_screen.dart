@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import '../core/theme/app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 14: Activity Notifications Screen
+/// Activity feed listing swap requests, acceptances, and nearby book updates.
+/// ---------------------------------------------------------------------------
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({super.key});
 
@@ -8,6 +12,7 @@ class NotificationsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // Activity notifications feed data
     final notifications = [
       {
         'title': 'New Swap Request Received',

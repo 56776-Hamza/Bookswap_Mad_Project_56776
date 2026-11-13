@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/app_user.dart';
 
+/// ---------------------------------------------------------------------------
+/// AuthProvider: Manages authentication state, current user profile, and edits
+/// ---------------------------------------------------------------------------
 class AuthProvider extends ChangeNotifier {
+  // Current active user model state
   AppUser _currentUser = AppUser(
     id: 'u_xyz',
     name: 'XYZ',
@@ -18,6 +22,7 @@ class AuthProvider extends ChangeNotifier {
   AppUser get currentUser => _currentUser;
   bool get isLoggedIn => _isLoggedIn;
 
+  /// Handles standard email/password login action
   void login(String email, String password) {
     _isLoggedIn = true;
     _currentUser = AppUser(
@@ -33,6 +38,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Handles Google sign-in action
   void loginWithGoogle() {
     _isLoggedIn = true;
     _currentUser = AppUser(
@@ -48,11 +54,13 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Handles user logout action
   void logout() {
     _isLoggedIn = false;
     notifyListeners();
   }
 
+  /// Updates current user profile details (Name and City location)
   void updateProfile({String? name, String? city}) {
     _currentUser = _currentUser.copyWith(
       name: name ?? _currentUser.name,

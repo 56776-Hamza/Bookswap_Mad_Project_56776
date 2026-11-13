@@ -5,6 +5,10 @@ import '../core/theme/app_colors.dart';
 import '../core/widgets/custom_button.dart';
 import '../providers/auth_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 13: Edit Profile Screen
+/// Form allowing users to update their name and location (City only for privacy).
+/// ---------------------------------------------------------------------------
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
 
@@ -31,6 +35,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     super.dispose();
   }
 
+  /// Saves modified user profile fields and updates AuthProvider state
   void _saveProfile() {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     authProvider.updateProfile(
@@ -64,6 +69,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Avatar Image Picker Container
               Center(
                 child: Stack(
                   children: [
@@ -102,6 +108,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               const SizedBox(height: 30),
 
+              // Full Name Text Field
               const Text(
                 'Full Name',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -115,6 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               const SizedBox(height: 20),
 
+              // City Location Field (Privacy Rule: City Only)
               const Text(
                 'City / Area (Privacy Protected)',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -129,6 +137,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
               const SizedBox(height: 40),
 
+              // Save Changes Action Button
               PrimaryButton(
                 text: 'Save Changes',
                 onPressed: _saveProfile,

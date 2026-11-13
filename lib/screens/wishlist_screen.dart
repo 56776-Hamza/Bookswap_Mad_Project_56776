@@ -5,6 +5,10 @@ import '../core/theme/app_colors.dart';
 import '../core/widgets/book_card.dart';
 import '../providers/book_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 10: Saved Wishlist Screen (Tab 2 of Main Navigation)
+/// Grid view displaying all user saved/favorited books with empty state handler.
+/// ---------------------------------------------------------------------------
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
 

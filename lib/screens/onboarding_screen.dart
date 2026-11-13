@@ -3,6 +3,11 @@ import 'package:go_router/go_router.dart';
 import '../core/theme/app_colors.dart';
 import '../core/widgets/custom_button.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 2: Onboarding Screen
+/// 4-slide feature introduction carousel with illustrations, active dot indicators,
+/// next/get started actions, and skip option.
+/// ---------------------------------------------------------------------------
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -14,6 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
+  // Onboarding slides content data
   final List<Map<String, String>> _slides = [
     {
       'title': 'Find Books\nNear You',
@@ -44,6 +50,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            // PageView Carousel containing the 4 onboarding slides
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -63,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(height: 12),
-                          // Illustration Box
+                          // Feature Illustration Box Container
                           Container(
                             width: double.infinity,
                             constraints: const BoxConstraints(maxHeight: 200),
@@ -100,6 +107,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                           const SizedBox(height: 24),
+                          // Slide Title Text
                           Text(
                             slide['title']!,
                             textAlign: TextAlign.center,
@@ -111,6 +119,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                           const SizedBox(height: 12),
+                          // Slide Subtitle Text
                           Text(
                             slide['subtitle']!,
                             textAlign: TextAlign.center,
@@ -129,7 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
 
-            // Page Indicator Dots
+            // Animated Page Dot Indicators
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(_slides.length, (index) {
@@ -148,7 +157,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             const SizedBox(height: 30),
 
-            // Action Buttons
+            // Action Buttons (Next / Get Started & Skip)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Column(

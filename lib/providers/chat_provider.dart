@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
 
+/// ---------------------------------------------------------------------------
+/// ChatProvider: Manages in-app message streams for each active swap request
+/// ---------------------------------------------------------------------------
 class ChatProvider extends ChangeNotifier {
+  // Store chat message histories indexed by requestId
   final Map<String, List<ChatMessage>> _messages = {
     'req_4': [
       ChatMessage(
@@ -43,10 +47,12 @@ class ChatProvider extends ChangeNotifier {
     ],
   };
 
+  /// Retrieves list of chat messages for a specific swap request ID
   List<ChatMessage> getMessages(String requestId) {
     return _messages[requestId] ?? [];
   }
 
+  /// Sends a new message in the chat thread
   void sendMessage(String requestId, String text) {
     if (text.trim().isEmpty) return;
 
@@ -66,6 +72,6 @@ class ChatProvider extends ChangeNotifier {
       _messages[requestId] = [newMessage];
     }
 
-    notifyListeners();
+    notifyListeners(); // Updates ChatScreen widget tree
   }
 }

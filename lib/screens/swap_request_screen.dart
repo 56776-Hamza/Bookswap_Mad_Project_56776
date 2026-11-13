@@ -9,6 +9,11 @@ import '../providers/book_provider.dart';
 import '../providers/swap_provider.dart';
 import '../providers/auth_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 7: Request Swap Screen
+/// Proposal screen where users select a target book to acquire, pick one of their
+/// listed books to trade, write a message, and send a swap request.
+/// ---------------------------------------------------------------------------
 class SwapRequestScreen extends StatefulWidget {
   final String targetBookId;
 
@@ -33,6 +38,7 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
     super.dispose();
   }
 
+  /// Submits the new swap request proposal and navigates to the Manage Requests screen
   void _sendRequest(Book targetBook) {
     if (_selectedOfferedBook == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -105,7 +111,7 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Requested Book Info
+              // Target Requested Book Summary Card
               const Text(
                 'You want to get:',
                 style: TextStyle(
@@ -178,7 +184,7 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
               ),
               const SizedBox(height: 28),
 
-              // Offer Choice Section
+              // Offer Choice Section - Horizontal Picker
               const Text(
                 'Select one of your books to offer:',
                 style: TextStyle(
@@ -300,7 +306,7 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
 
               const SizedBox(height: 28),
 
-              // Message Section
+              // Optional Note / Message Box
               const Text(
                 'Add a Note for the Owner:',
                 style: TextStyle(
@@ -318,7 +324,7 @@ class _SwapRequestScreenState extends State<SwapRequestScreen> {
               ),
               const SizedBox(height: 36),
 
-              // Send Request Button
+              // Submit Swap Proposal Button
               PrimaryButton(
                 text: 'Send Swap Request',
                 icon: Icons.send_rounded,

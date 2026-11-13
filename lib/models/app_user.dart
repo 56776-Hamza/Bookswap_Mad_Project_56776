@@ -1,12 +1,16 @@
+/// ---------------------------------------------------------------------------
+/// AppUser Data Model: Represents a user registered in the BookSwap system
+/// Note: Enforces privacy by storing and showing city only (never full home address).
+/// ---------------------------------------------------------------------------
 class AppUser {
-  final String id;
-  final String name;
-  final String email;
-  final String avatarUrl;
-  final String city;
-  final double ratingAvg;
-  final int swapCount;
-  final int listingCount;
+  final String id;           // Unique user identifier
+  final String name;         // Display name of the user
+  final String email;        // Email address of the user
+  final String avatarUrl;    // Profile image URL
+  final String city;         // City location (e.g. Islamabad) for local swaps
+  final double ratingAvg;    // Average star rating from previous book swaps
+  final int swapCount;       // Total number of completed book swaps
+  final int listingCount;   // Total active books listed by the user
 
   AppUser({
     required this.id,
@@ -19,6 +23,7 @@ class AppUser {
     required this.listingCount,
   });
 
+  /// Utility method to create a updated copy of AppUser with modified fields
   AppUser copyWith({
     String? id,
     String? name,

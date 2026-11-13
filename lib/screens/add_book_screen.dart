@@ -7,6 +7,12 @@ import '../models/book.dart';
 import '../providers/book_provider.dart';
 import '../providers/auth_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 6: Add / List New Book Screen
+/// Input form allowing users to publish new books for exchange.
+/// Includes cover photo picker placeholder, title, author, category dropdown,
+/// condition chips, and description input.
+/// ---------------------------------------------------------------------------
 class AddBookScreen extends StatefulWidget {
   const AddBookScreen({super.key});
 
@@ -42,6 +48,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
     super.dispose();
   }
 
+  /// Form submission logic: validates input fields and adds book to BookProvider inventory
   void _submitBook() {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -102,7 +109,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Image Upload Placeholder Container
+                // Image Upload Placeholder Box
                 GestureDetector(
                   onTap: () {
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -150,7 +157,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 24),
 
-                // Book Title Field
+                // Book Title Form Field
                 const Text(
                   'Book Title',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -167,7 +174,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 18),
 
-                // Author Name Field
+                // Author Name Form Field
                 const Text(
                   'Author Name',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -184,7 +191,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 18),
 
-                // Category Dropdown
+                // Category Selection Dropdown
                 const Text(
                   'Category',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -211,7 +218,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 18),
 
-                // Condition Selector
+                // Book Physical Condition Choice Chips
                 const Text(
                   'Book Condition',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -241,7 +248,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 18),
 
-                // Description Field
+                // Detailed Description Form Field
                 const Text(
                   'Description',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
@@ -257,7 +264,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ),
                 const SizedBox(height: 30),
 
-                // Publish Button
+                // Publish Action Button
                 PrimaryButton(
                   text: 'Publish Listing',
                   icon: Icons.check_circle_outline_rounded,

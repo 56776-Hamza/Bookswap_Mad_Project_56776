@@ -5,6 +5,11 @@ import '../core/theme/app_colors.dart';
 import '../models/swap_request.dart';
 import '../providers/swap_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 8: Manage Swap Requests Screen (Tab 3 of Main Navigation)
+/// Tabbed interface managing Incoming vs Outgoing swap proposals.
+/// Supports Accepting, Rejecting, or Launching Direct Chat with users.
+/// ---------------------------------------------------------------------------
 class ManageRequestsScreen extends StatefulWidget {
   const ManageRequestsScreen({super.key});
 
@@ -62,6 +67,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
     );
   }
 
+  /// Helper builder to render list of requests or empty state UI
   Widget _buildRequestList(List<SwapRequest> requests,
       {required bool isIncoming, required bool isDark}) {
     if (requests.isEmpty) {
@@ -90,6 +96,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
     );
   }
 
+  /// Builder for individual swap request card component
   Widget _buildRequestCard(SwapRequest req,
       {required bool isIncoming, required bool isDark}) {
     final swapProvider = Provider.of<SwapProvider>(context, listen: false);
@@ -126,7 +133,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header: Requester Name & Status
+          // Card Header: Avatar, Requester/Owner Name, and Status Badge
           Row(
             children: [
               CircleAvatar(
@@ -185,10 +192,10 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
           ),
           const Divider(height: 24),
 
-          // Book Swap Comparison Row
+          // Book Swap Comparison View: Target Book ⬌ Offered Book
           Row(
             children: [
-              // Target Book
+              // Wants Target Book Column
               Expanded(
                 child: Column(
                   children: [
@@ -205,7 +212,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
                 ),
               ),
               const Icon(Icons.swap_horiz_rounded, color: AppColors.primary),
-              // Offered Book
+              // Offers Exchanged Book Column
               Expanded(
                 child: Column(
                   children: [
@@ -225,7 +232,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
           ),
           const SizedBox(height: 16),
 
-          // Message Note
+          // Proposal Note Container
           if (req.message.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(10),
@@ -242,7 +249,7 @@ class _ManageRequestsScreenState extends State<ManageRequestsScreen>
 
           const SizedBox(height: 16),
 
-          // Action Buttons
+          // Action Buttons: Accept / Reject for Incoming; Chat for Accepted/Outgoing
           Row(
             children: [
               if (isIncoming && req.status == 'Pending') ...[

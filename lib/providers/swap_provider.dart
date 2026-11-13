@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import '../models/swap_request.dart';
 
+/// ---------------------------------------------------------------------------
+/// SwapProvider: Manages swap proposals (Incoming, Outgoing, Status changes)
+/// ---------------------------------------------------------------------------
 class SwapProvider extends ChangeNotifier {
+  // Initial list of swap request transactions
   final List<SwapRequest> _requests = [
     SwapRequest(
       id: 'req_1',
@@ -83,14 +87,17 @@ class SwapProvider extends ChangeNotifier {
 
   List<SwapRequest> get allRequests => _requests;
 
+  /// Incoming requests targeting books owned by current user ('u_xyz')
   List<SwapRequest> get incomingRequests {
     return _requests.where((r) => r.targetOwnerId == 'u_xyz').toList();
   }
 
+  /// Outgoing requests submitted by current user ('u_xyz')
   List<SwapRequest> get outgoingRequests {
     return _requests.where((r) => r.requesterId == 'u_xyz').toList();
   }
 
+  /// Get specific request by ID
   SwapRequest? getRequestById(String id) {
     try {
       return _requests.firstWhere((r) => r.id == id);
@@ -99,11 +106,13 @@ class SwapProvider extends ChangeNotifier {
     }
   }
 
+  /// Submit a new swap request proposal
   void addRequest(SwapRequest request) {
     _requests.insert(0, request);
     notifyListeners();
   }
 
+  /// Update request status (e.g. Pending ➔ Accepted or Rejected)
   void updateRequestStatus(String requestId, String newStatus) {
     final index = _requests.indexWhere((r) => r.id == requestId);
     if (index != -1) {

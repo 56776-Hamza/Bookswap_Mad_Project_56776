@@ -1,5 +1,11 @@
+/// ---------------------------------------------------------------------------
+/// SwapRequest Model: Represents a peer-to-peer book swap proposal
+/// Contains information about requested book, offered book, requester, and status.
+/// ---------------------------------------------------------------------------
 class SwapRequest {
-  final String id;
+  final String id;                  // Unique swap request ID
+  
+  // Requested Target Book Details
   final String targetBookId;
   final String targetBookTitle;
   final String targetBookAuthor;
@@ -7,18 +13,21 @@ class SwapRequest {
   final String targetOwnerId;
   final String targetOwnerName;
 
+  // Requester User Details
   final String requesterId;
   final String requesterName;
   final String requesterAvatar;
 
+  // Offered Exchange Book Details
   final String offeredBookId;
   final String offeredBookTitle;
   final String offeredBookAuthor;
   final String offeredBookCover;
 
-  final String status; // Pending, Accepted, Rejected, Cancelled, Completed
-  final String message;
-  final DateTime createdAt;
+  // Request Status: Pending, Accepted, Rejected, Cancelled, Completed
+  final String status;
+  final String message;            // Optional note/message for book owner
+  final DateTime createdAt;        // Timestamp when proposal was submitted
 
   SwapRequest({
     required this.id,
@@ -40,6 +49,7 @@ class SwapRequest {
     required this.createdAt,
   });
 
+  /// Utility method to copy and update specific fields of a SwapRequest
   SwapRequest copyWith({
     String? id,
     String? targetBookId,

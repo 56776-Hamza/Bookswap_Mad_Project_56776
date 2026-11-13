@@ -8,8 +8,13 @@ import 'manage_requests_screen.dart';
 import 'profile_screen.dart';
 import 'wishlist_screen.dart';
 
+/// ---------------------------------------------------------------------------
+/// Main Navigation Shell Screen
+/// Persistent container hosting the 4 primary tabs (Explore, Wishlist, Requests, Profile)
+/// with a centered FloatingActionButton (+ Add Book) and bottom notched navigation bar.
+/// ---------------------------------------------------------------------------
 class MainNavigationScreen extends StatefulWidget {
-  final int initialIndex;
+  final int initialIndex; // Initial active tab index
 
   const MainNavigationScreen({
     super.key,
@@ -35,6 +40,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     final swapProvider = Provider.of<SwapProvider>(context);
     final pendingCount = swapProvider.incomingRequests.where((r) => r.status == 'Pending').length;
 
+    // Tab pages held in memory via IndexedStack
     final pages = [
       const ExploreScreen(),
       const WishlistScreen(),
@@ -47,6 +53,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         index: _currentIndex,
         children: pages,
       ),
+      // Centered FloatingActionButton for listing new books
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.primary,
         child: const Icon(Icons.add_rounded, color: Colors.white, size: 28),
@@ -55,6 +62,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // Bottom Navigation Bar with notch cutout for the FloatingActionButton
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 8,
@@ -66,7 +74,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
             children: [
               _buildNavItem(0, Icons.explore_rounded, 'Explore'),
               _buildNavItem(1, Icons.favorite_border_rounded, 'Wishlist'),
-              const SizedBox(width: 40), // FAB Gap
+              const SizedBox(width: 40), // Gap reserved for FloatingActionButton
               _buildNavItem(
                 2,
                 Icons.swap_horizontal_circle_outlined,
@@ -81,6 +89,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
     );
   }
 
+  /// Helper builder for bottom navigation icons with notification badges
   Widget _buildNavItem(int index, IconData icon, String label, {int badgeCount = 0}) {
     final isSelected = _currentIndex == index;
     final color = isSelected ? AppColors.primary : Colors.grey;

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// PrimaryButton Widget: Custom full-width rounded pill button (Emerald Green)
+/// Supports optional icon and loading spinner state
+/// ---------------------------------------------------------------------------
 class PrimaryButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
-  final IconData? icon;
-  final bool isLoading;
+  final String text;           // Button label
+  final VoidCallback onPressed; // Tap callback action
+  final IconData? icon;        // Optional leading icon
+  final bool isLoading;       // Shows progress spinner when true
 
   const PrimaryButton({
     super.key,
@@ -24,7 +28,7 @@ class PrimaryButton extends StatelessWidget {
         foregroundColor: Colors.white,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(28), // Pill shape as in design
+          borderRadius: BorderRadius.circular(28),
         ),
         elevation: 0,
       ),
@@ -57,10 +61,13 @@ class PrimaryButton extends StatelessWidget {
   }
 }
 
+/// ---------------------------------------------------------------------------
+/// CustomOutlinedButton Widget: Custom outlined button (Used for Google login, etc.)
+/// ---------------------------------------------------------------------------
 class CustomOutlinedButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
-  final Widget? leading;
+  final String text;           // Button label
+  final VoidCallback onPressed; // Tap callback action
+  final Widget? leading;       // Optional leading widget (e.g. Google icon logo)
 
   const CustomOutlinedButton({
     super.key,

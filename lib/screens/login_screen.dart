@@ -5,6 +5,11 @@ import '../core/theme/app_colors.dart';
 import '../core/widgets/custom_button.dart';
 import '../providers/auth_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 3: Login & Authentication Screen
+/// Multi-option authentication supporting One-Tap Google Sign-In, Email Sign-In,
+/// and Account Creation flows.
+/// ---------------------------------------------------------------------------
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -24,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  /// Handles user login verification and navigates to the main app dashboard
   void _handleLogin() {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
     if (_emailController.text.isNotEmpty) {
@@ -45,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 30),
-              // App Logo
+              // App Brand Emblem Logo
               Container(
                 width: 90,
                 height: 90,
@@ -117,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 36),
 
+              // Toggle between Email Form and Choice Buttons
               if (_showEmailFields) ...[
                 TextField(
                   controller: _emailController,
@@ -150,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text('Back to options'),
                 ),
               ] else ...[
-                // Google Sign In
+                // Google Sign In Option
                 CustomOutlinedButton(
                   text: 'Continue with Google',
                   leading: Container(
@@ -174,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 14),
 
-                // Email Sign In
+                // Email Sign In Option
                 CustomOutlinedButton(
                   text: 'Sign in with Email',
                   leading: const Icon(Icons.email_outlined, color: AppColors.lightTextPrimary),
@@ -186,7 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 14),
 
-                // Create Account
+                // Create Account Option
                 PrimaryButton(
                   text: 'Create New Account',
                   onPressed: () {
@@ -196,7 +203,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
 
               const SizedBox(height: 40),
-              // Footer Terms
+              // Footer Terms & Privacy Statement
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(

@@ -5,6 +5,11 @@ import '../core/theme/app_colors.dart';
 import '../providers/auth_provider.dart';
 import '../providers/theme_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 11 & 12: User Profile & Dark Mode Settings Screen (Tab 4 of Navigation)
+/// Displays active user profile summary, statistics (Swaps, Listings, Rating),
+/// settings options, Dark Mode toggle switch, and logout button.
+/// ---------------------------------------------------------------------------
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -32,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // User Header Info Box
+            // User Header Profile Card Box
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -85,7 +90,8 @@ class ProfileScreen extends StatelessWidget {
                   const SizedBox(height: 16),
                   const Divider(),
                   const SizedBox(height: 12),
-                  // User Stats Row
+                  
+                  // User Activity Statistics Row (Swaps, Listings, Rating)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -102,7 +108,7 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Profile Options Menu
+            // Settings & Navigation ListTile Options Box
             Container(
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkSurface : Colors.white,
@@ -137,7 +143,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const Divider(height: 1),
 
-                  // Screen 12: Dark Mode Theme Support Toggle!
+                  // Screen 12: Dark Mode Theme Toggle Switch
                   SwitchListTile(
                     secondary: Container(
                       padding: const EdgeInsets.all(8),
@@ -181,7 +187,7 @@ class ProfileScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Logout Button
+            // Logout Confirmation Button
             SizedBox(
               width: double.infinity,
               child: OutlinedButton.icon(
@@ -211,6 +217,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  /// Helper builder to render profile statistics items
   Widget _buildStatColumn(String label, String value, bool isDark) {
     return Column(
       children: [
@@ -234,6 +241,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  /// Helper builder to render profile navigation list items
   Widget _buildListTile({
     required IconData icon,
     required String title,

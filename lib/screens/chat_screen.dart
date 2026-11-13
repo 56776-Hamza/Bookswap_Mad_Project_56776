@@ -4,6 +4,11 @@ import '../core/theme/app_colors.dart';
 import '../providers/chat_provider.dart';
 import '../providers/swap_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 9: Direct Chat & Negotiation Screen
+/// Live 1-on-1 message thread between book swap participants.
+/// Features safety reminder banner, message bubbles, and send input area.
+/// ---------------------------------------------------------------------------
 class ChatScreen extends StatefulWidget {
   final String requestId;
 
@@ -25,6 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
+  /// Sends typed text message and clears the input controller field
   void _sendMessage() {
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
     chatProvider.sendMessage(widget.requestId, _textController.text);
@@ -97,7 +103,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Safe Swap Banner Warning
+            // Public Safety Meetup Disclaimer Banner
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               color: AppColors.accent.withValues(alpha: 0.12),
@@ -115,7 +121,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-            // Chat Messages List
+            // Chat Messages History List
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(16),
@@ -127,7 +133,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-            // Input Area
+            // Message Input Box and Send Button
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
@@ -180,6 +186,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  /// Helper widget to build chat bubbles for sent vs received messages
   Widget _buildMessageBubble(dynamic msg, bool isDark) {
     final isMe = msg.isMe;
 

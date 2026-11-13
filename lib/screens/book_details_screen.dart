@@ -6,6 +6,11 @@ import '../core/widgets/custom_button.dart';
 import '../models/book.dart';
 import '../providers/book_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 5: Book Details Screen
+/// Complete details screen displaying cover image, title, author, condition,
+/// owner profile card, description, and request swap action button.
+/// ---------------------------------------------------------------------------
 class BookDetailsScreen extends StatelessWidget {
   final String bookId;
 
@@ -20,6 +25,7 @@ class BookDetailsScreen extends StatelessWidget {
     final book = bookProvider.getBookById(bookId);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // Handle null or invalid book ID lookup safely
     if (book == null) {
       return Scaffold(
         appBar: AppBar(title: const Text('Book Details')),
@@ -40,6 +46,7 @@ class BookDetailsScreen extends StatelessWidget {
           onPressed: () => context.pop(),
         ),
         actions: [
+          // Wishlist Heart Toggle
           IconButton(
             icon: Icon(
               book.isWishlisted ? Icons.favorite : Icons.favorite_border_rounded,
@@ -49,6 +56,7 @@ class BookDetailsScreen extends StatelessWidget {
               bookProvider.toggleWishlist(book.id);
             },
           ),
+          // Share Link Button
           IconButton(
             icon: Icon(
               Icons.share_outlined,
@@ -67,7 +75,7 @@ class BookDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Center Book Cover Image
+            // Book Cover Image Container
             Center(
               child: Container(
                 width: 180,
@@ -105,7 +113,7 @@ class BookDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Book Title & Author
+            // Book Title and Author Name
             Text(
               book.title,
               style: TextStyle(
@@ -162,7 +170,7 @@ class BookDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Owner Profile Box
+            // Owner Profile Information Box
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -244,7 +252,7 @@ class BookDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            // Description
+            // Book Description Text
             Text(
               'About this Book',
               style: TextStyle(
@@ -267,7 +275,7 @@ class BookDetailsScreen extends StatelessWidget {
         ),
       ),
 
-      // Bottom Sticky Action Button
+      // Sticky Bottom Action Button for Swap Request
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

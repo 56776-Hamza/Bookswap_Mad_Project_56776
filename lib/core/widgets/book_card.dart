@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import '../../models/book.dart';
 import '../theme/app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// BookCard Widget: Display card for book grid and recommendation lists
+/// Displays cover image, title, author, category badge, and wishlist toggle button
+/// ---------------------------------------------------------------------------
 class BookCard extends StatelessWidget {
-  final Book book;
-  final VoidCallback onTap;
-  final VoidCallback onWishlistTap;
+  final Book book;                 // Book data object to display
+  final VoidCallback onTap;         // Callback when card is tapped (opens book details)
+  final VoidCallback onWishlistTap; // Callback when wishlist heart icon is tapped
 
   const BookCard({
     super.key,
@@ -39,7 +43,7 @@ class BookCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Book Image with Wishlist Button
+            // Book Image Container with Heart Wishlist Overlay
             Stack(
               children: [
                 ClipRRect(
@@ -49,11 +53,12 @@ class BookCard extends StatelessWidget {
                     child: Image.network(
                       book.imageUrl,
                       fit: BoxFit.cover,
+                      // Fallback gradient decoration if network image fails to load
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
-                         decoration: const BoxDecoration(
-                           gradient: LinearGradient(
-                             colors: [Color(0xFF2E7D32), Color(0xFF1E6F5C)],
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFF2E7D32), Color(0xFF1E6F5C)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                             ),
@@ -62,8 +67,8 @@ class BookCard extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                               book.title,
-                               textAlign: TextAlign.center,
+                                book.title,
+                                textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -76,7 +81,7 @@ class BookCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Wishlist Heart Button
+                // Wishlist Heart Button Overlay
                 Positioned(
                   top: 8,
                   right: 8,
@@ -104,7 +109,7 @@ class BookCard extends StatelessWidget {
                 ),
               ],
             ),
-            // Details
+            // Book Details Section (Title, Author, Category Chip)
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
@@ -131,7 +136,7 @@ class BookCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  // Category Badge
+                  // Category Badge Pill
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(

@@ -7,9 +7,15 @@ import '../core/widgets/book_card.dart';
 import '../providers/book_provider.dart';
 import '../providers/auth_provider.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 4: Explore & Discover Screen (Tab 1 of Main Navigation)
+/// Features search bar, category chips, condition filter bottom sheet,
+/// recommended horizontal scroll, and latest nearby book grid.
+/// ---------------------------------------------------------------------------
 class ExploreScreen extends StatelessWidget {
   const ExploreScreen({super.key});
 
+  // Category list filter items
   final List<Map<String, dynamic>> categories = const [
     {'name': 'All', 'icon': Icons.grid_view_rounded},
     {'name': 'Fiction', 'icon': Icons.auto_stories_rounded},
@@ -18,6 +24,7 @@ class ExploreScreen extends StatelessWidget {
     {'name': 'Science Fiction', 'icon': Icons.rocket_launch_rounded},
   ];
 
+  /// Displays the book condition filter bottom sheet (New, Like New, Good, Fair)
   void _showFilterBottomSheet(BuildContext context) {
     final bookProvider = Provider.of<BookProvider>(context, listen: false);
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -133,7 +140,7 @@ class ExploreScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Bar Location
+              // Top Location Bar and Quick Action Icons
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -195,7 +202,7 @@ class ExploreScreen extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // Search Bar & Filter Button
+              // Search Input Bar and Filter Trigger Button
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -258,7 +265,7 @@ class ExploreScreen extends StatelessWidget {
 
               const SizedBox(height: 20),
 
-              // Categories Chips
+              // Horizontal Category Chips List
               SizedBox(
                 height: 42,
                 child: ListView.builder(
@@ -312,7 +319,7 @@ class ExploreScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // Recommended Horizontal List
+              // Recommended Horizontal Scrollable Book Cards List
               SizedBox(
                 height: 250,
                 child: ListView.builder(
@@ -369,7 +376,7 @@ class ExploreScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // Latest Nearby Grid
+              // Latest Nearby Grid View of Book Cards
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: GridView.builder(

@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../core/theme/app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// Screen 1: Splash Screen
+/// App launch branding screen with logo emblem, tagline, and progress spinner.
+/// Automatically transitions to Onboarding Screen after 3 seconds.
+/// ---------------------------------------------------------------------------
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -16,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    // Start a 3-second timer to auto-navigate to onboarding screen
     _timer = Timer(const Duration(seconds: 3), () {
       if (mounted) {
         context.go('/onboarding');
@@ -25,6 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
+    // Safely cancel timer to prevent memory leaks on screen disposal
     _timer?.cancel();
     super.dispose();
   }
@@ -35,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: AppColors.lightBackground,
       body: Stack(
         children: [
-          // Background Gradient Circles / Waves
+          // Background Aesthetic Radial Wave Decoration
           Positioned(
             bottom: -100,
             left: -50,
@@ -61,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Spacer(),
-                  // Logo Icon Container
+                  // BookSwap App Brand Logo Emblem
                   Container(
                     width: 120,
                     height: 120,
@@ -104,7 +111,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  // App Name
+                  
+                  // App Main Title
                   const Text(
                     'BookSwap',
                     style: TextStyle(
@@ -115,7 +123,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Tagline
+                  
+                  // App Tagline
                   const Text(
                     'Swap Books\nShare Knowledge\nBuild a Reading Community',
                     textAlign: TextAlign.center,
@@ -127,6 +136,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   const Spacer(),
+                  
                   // Loading Indicator
                   const SizedBox(
                     width: 32,

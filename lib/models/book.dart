@@ -1,9 +1,13 @@
+/// ---------------------------------------------------------------------------
+/// Book Condition Enum: Categorizes physical condition of listed books
+/// ---------------------------------------------------------------------------
 enum BookCondition {
-  likeNew,
-  good,
-  fair,
+  likeNew, // Mint condition with zero wear
+  good,    // Slightly used but well taken care of
+  fair,    // Noticeable wear or markings
 }
 
+/// Extension to get a readable string representation of book conditions
 extension BookConditionExtension on BookCondition {
   String get displayName {
     switch (this) {
@@ -17,23 +21,26 @@ extension BookConditionExtension on BookCondition {
   }
 }
 
+/// ---------------------------------------------------------------------------
+/// Book Model: Represents a single book listing on the platform
+/// ---------------------------------------------------------------------------
 class Book {
-  final String id;
-  final String ownerId;
-  final String ownerName;
-  final String ownerAvatar;
-  final String ownerCity;
-  final double ownerRating;
-  final int ownerSwaps;
-  final String title;
-  final String author;
-  final String category;
-  final BookCondition condition;
-  final String description;
-  final String imageUrl;
-  final String status; // Available, Requested, Accepted, Swapped
-  final bool isWishlisted;
-  final String distance;
+  final String id;             // Unique book ID
+  final String ownerId;        // ID of the user listing the book
+  final String ownerName;      // Name of the book owner
+  final String ownerAvatar;    // Profile image URL of owner
+  final String ownerCity;      // City location of owner
+  final double ownerRating;    // Owner rating score
+  final int ownerSwaps;        // Number of successful swaps by owner
+  final String title;          // Book title
+  final String author;         // Author name
+  final String category;       // Category (Fiction, Self Help, Programming, etc.)
+  final BookCondition condition;// Physical condition
+  final String description;    // Detailed description of the book
+  final String imageUrl;       // Cover image URL
+  final String status;         // Status: Available, Requested, Accepted, Swapped
+  final bool isWishlisted;     // Whether current user saved this book to wishlist
+  final String distance;       // Distance string (e.g. 2 km away)
 
   Book({
     required this.id,
@@ -54,6 +61,7 @@ class Book {
     required this.distance,
   });
 
+  /// Utility method to create a updated copy of Book with modified properties
   Book copyWith({
     String? id,
     String? ownerId,

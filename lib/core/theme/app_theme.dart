@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'app_colors.dart';
 
+/// ---------------------------------------------------------------------------
+/// AppTheme: Configures Material 3 Light Theme & Dark Theme
+/// Includes Google Fonts typography (Nunito & Poppins), custom button themes,
+/// input field decorations, app bar styles, and card themes.
+/// ---------------------------------------------------------------------------
 class AppTheme {
+  /// Builds and returns the Light Theme configuration
   static ThemeData get lightTheme {
     final baseTextTheme = GoogleFonts.nunitoTextTheme();
     final headingTextTheme = GoogleFonts.poppinsTextTheme();
@@ -125,6 +131,7 @@ class AppTheme {
     );
   }
 
+  /// Builds and returns the Dark Theme configuration
   static ThemeData get darkTheme {
     final baseTextTheme = GoogleFonts.nunitoTextTheme();
     final headingTextTheme = GoogleFonts.poppinsTextTheme();
